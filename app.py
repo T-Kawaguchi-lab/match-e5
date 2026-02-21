@@ -1,7 +1,7 @@
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List
 
 import numpy as np
 import pandas as pd
@@ -9,7 +9,7 @@ import streamlit as st
 from sentence_transformers import SentenceTransformer
 
 # ------------------------
-# Fixed settings (keep E5 structure unchanged)
+# Fixed settings
 # ------------------------
 DEFAULT_MODEL = "intfloat/multilingual-e5-base"
 ROLE_PATH = "meta.role"
@@ -91,7 +91,8 @@ def summarize_one_line(r: Dict[str, Any]) -> str:
         return v.strip()
     v = get_nested(r, "match_text.canonical_card_text")
     if isinstance(v, str) and v.strip():
-        return (v.strip()[:160] + "…") if len(v.strip()) > 160 else v.strip()
+        s = v.strip()
+        return (s[:160] + "…") if len(s) > 160 else s
     return ""
 
 
@@ -111,20 +112,52 @@ def build_id(i_1based: int) -> str:
 
 
 @st.cache_resource
-def load_model(model_name: str):
+def load_model(model_name: str) -> SentenceTransformer:
     return SentenceTransformer(model_name)
 
 
-def embed_e5(model: SentenceTransformer, query_text: str, doc_texts: List[str]) -> np.ndarray:
-    q = model.encode([ensure_prefix(query_text, "query:")], normalize_embeddings=True, show_progress_bar=False)
-    d = model.encode([ensure_prefix(t, "passage:") for t in doc_texts], normalize_embeddings=True, show_progress_bar=False)
-    q = np.asarray(q, dtype=np.float32)
-    d = np.asarray(d, dtype=np.float32)
-    return (q @ d.T).reshape(-1)
+@st.cache_data(show_spinner=False)
+def encode_texts(model_name: str, texts: List[str], mode: str) -> np.ndarray:
+    """
+    mode: "query" or "passage"
+    E5: query側は query:、doc側は passage: を付けて normalize_embeddings=True で埋め込み
+    """
+    model = load_model(model_name)
+    if mode not in {"query", "passage"}:
+        raise ValueError("mode must be 'query' or 'passage'")
+    pref = "query:" if mode == "query" else "passage:"
+    prep = [ensure_prefix(t, pref) for t in texts]
+    emb = model.encode(prep, normalize_embeddings=True, show_progress_bar=False)
+    return np.asarray(emb, dtype=np.float32)
+
+
+@st.cache_data(show_spinner=False)
+def precompute_similarity_matrices(
+    model_name: str,
+    ai_texts: List[str],
+    other_texts: List[str],
+) -> Dict[str, np.ndarray]:
+    """
+    2方向の類似度行列を先に作る:
+      - AI(query) -> Other(passage):  [n_ai, n_other]
+      - Other(query) -> AI(passage):  [n_other, n_ai]
+    """
+    ai_q = encode_texts(model_name, ai_texts, mode="query")
+    ai_p = encode_texts(model_name, ai_texts, mode="passage")
+    ot_q = encode_texts(model_name, other_texts, mode="query")
+    ot_p = encode_texts(model_name, other_texts, mode="passage")
+
+    sim_ai_to_other = ai_q @ ot_p.T
+    sim_other_to_ai = ot_q @ ai_p.T
+
+    return {
+        "sim_ai_to_other": sim_ai_to_other.astype(np.float32),
+        "sim_other_to_ai": sim_other_to_ai.astype(np.float32),
+    }
 
 
 # ------------------------
-# Data selection UI (defaults to current files)
+# Data selection UI
 # ------------------------
 with st.sidebar:
     st.header("データ選択（任意）")
@@ -248,55 +281,71 @@ if len(ai_df) == 0 or len(other_df) == 0:
     st.write("role_rawのユニーク（先頭30）:", sorted({str(v) for v in roles_raw if v is not None})[:30])
     st.stop()
 
+
 # ------------------------
-# Minimal UI (direction + query person + topK)
+# Precompute (HEAVY) ONCE
+# ------------------------
+st.write("### 事前計算")
+st.caption("初回だけ全員分の埋め込みと類似度行列を作ります。以降は人物を選ぶだけで即表示されます。")
+
+with st.spinner("全員分の類似度を事前計算しています。（初回のみとても重いです）10分程度かかります。..."):
+    mats = precompute_similarity_matrices(
+        DEFAULT_MODEL,
+        ai_df["embed_text"].tolist(),
+        other_df["embed_text"].tolist(),
+    )
+
+st.success("事前計算完了")
+
+
+# ------------------------
+# Fast UI: pick person -> show ALL targets
 # ------------------------
 st.write("### 設定")
 direction = st.radio("検索方向", ["AI研究者 → 他分野研究者", "他分野研究者 → AI研究者"], index=0, horizontal=True)
-top_k = st.slider("Top-K", 3, 100, 20, 1)
 
 if direction == "AI研究者 → 他分野研究者":
     query_df = ai_df
     doc_df = other_df
+    sim_matrix = mats["sim_ai_to_other"]  # [n_ai, n_other]
     query_label = "AI研究者（query）"
     doc_label = "他分野研究者（推薦先）"
 else:
     query_df = other_df
     doc_df = ai_df
+    sim_matrix = mats["sim_other_to_ai"]  # [n_other, n_ai]
     query_label = "他分野研究者（query）"
     doc_label = "AI研究者（推薦先）"
 
-st.write("### クエリ人物を選択")
-labels = query_df.apply(lambda r: f'{r["name"]} | {r["affiliation"]} | {r["position"]} | {r["research_field"]}', axis=1).tolist()
+st.write("### クエリ人物を選択（総件数ぶんから指定 → 即表示）")
+labels = query_df.apply(
+    lambda r: f'{r["name"]} | {r["affiliation"]} | {r["position"]} | {r["research_field"]}',
+    axis=1
+).tolist()
+
 sel = st.selectbox(query_label, labels, index=0)
 sel_idx = labels.index(sel)
-query_text = query_df.loc[sel_idx, "embed_text"]
 
-run = st.button(f"検索実行：{query_label} → {doc_label}", type="primary")
-if not run:
-    st.stop()
+# ---- 全件表示（ここから即時）----
+sims = sim_matrix[sel_idx]  # shape: [n_doc]
+order_idx = np.argsort(-sims)  # 全件ソート（n_doc 件）
 
-with st.spinner("E5で埋め込み計算中..."):
-    model = load_model(DEFAULT_MODEL)
-    sims = embed_e5(model, query_text, doc_df["embed_text"].tolist())
-
-top_k = min(top_k, len(doc_df))
-top_idx = np.argsort(-sims)[:top_k]
-
-res = doc_df.iloc[top_idx].copy()
+res = doc_df.iloc[order_idx].copy()
 res.insert(0, "rank", np.arange(1, len(res) + 1))
-res.insert(1, "similarity", sims[top_idx].astype(float))
+res.insert(1, "similarity", sims[order_idx].astype(float))
 
-show_cols = ["rank", "similarity", "name", "affiliation", "position", "research_field", "summary", "url"]
+show_cols = ["rank", "similarity", "id", "name", "affiliation", "position", "research_field", "summary", "url"]
 res_show = res[show_cols].copy()
 
-st.subheader("検索結果")
-st.caption(f"使用モデル: {DEFAULT_MODEL}（E5 / query:/passage: / normalize_embeddings=True）")
+st.subheader("検索結果（全件）")
+st.caption(f"使用モデル: {DEFAULT_MODEL}（事前計算済み / E5 query:/passage: / normalize_embeddings=True）")
+st.caption(f"表示: {query_label} → {doc_label}（件数: {len(res_show)}）")
 
 try:
     st.dataframe(
         res_show,
         use_container_width=True,
+        height=700,
         column_config={
             "url": st.column_config.LinkColumn("アンケートURL", display_text="open"),
             "similarity": st.column_config.NumberColumn("類似度", format="%.4f"),
@@ -305,10 +354,21 @@ try:
         hide_index=True,
     )
 except Exception:
-    st.dataframe(res_show, use_container_width=True, hide_index=True)
+    st.dataframe(res_show, use_container_width=True, height=700, hide_index=True)
 
+# ---- ダウンロードも全件 ----
 csv_bytes = res_show.to_csv(index=False, encoding="utf-8-sig").encode("utf-8-sig")
-st.download_button("結果をCSVでダウンロード（URL含む）", data=csv_bytes, file_name="match_results.csv", mime="text/csv")
+st.download_button(
+    "結果（全件）をCSVでダウンロード",
+    data=csv_bytes,
+    file_name="match_results_all.csv",
+    mime="text/csv",
+)
 
 json_bytes = res_show.to_json(orient="records", force_ascii=False, indent=2).encode("utf-8")
-st.download_button("結果をJSONでダウンロード（URL含む）", data=json_bytes, file_name="match_results.json", mime="application/json")
+st.download_button(
+    "結果（全件）をJSONでダウンロード",
+    data=json_bytes,
+    file_name="match_results_all.json",
+    mime="application/json",
+)
