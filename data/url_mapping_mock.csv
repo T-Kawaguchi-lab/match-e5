@@ -1,167 +1,255 @@
-﻿id,url,name,affiliation,role
-R0001,https://example.com/survey/R0001/田中-佐代子,田中 佐代子,芸術系/Faculty of Art and Design,Domain_researcher
-R0002,https://example.com/survey/R0002/マニエ渡邊レミ,マニエー渡邊レミー,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher
-R0003,https://example.com/survey/R0003/髙橋-阿貴,髙橋 阿貴,人間系/Faculty of Human Sciences,Domain_researcher
-R0004,https://example.com/survey/R0004/松田壮一郎,松田壮一郎,人間系/Faculty of Human Sciences,AI_researcher
-R0005,https://example.com/survey/R0005/千島雄太,千島雄太,人間系/Faculty of Human Sciences,Domain_researcher
-R0006,https://example.com/survey/R0006/小林和子,小林和子,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher
-R0007,https://example.com/survey/R0007/Kai-Wing-Kevin-Ho,Kai Wing Kevin Ho,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher
-R0008,https://example.com/survey/R0008/菅原大地,菅原大地,人間系/Faculty of Human Sciences,Domain_researcher
-R0009,https://example.com/survey/R0009/名畑目-真吾,名畑目 真吾,人間系/Faculty of Human Sciences,AI_researcher
-R0010,https://example.com/survey/R0010/笹森貴裕,笹森貴裕,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0011,https://example.com/survey/R0011/神戸-徹也,神戸 徹也,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0012,https://example.com/survey/R0012/松田侑子,松田侑子,人間系/Faculty of Human Sciences,Domain_researcher
-R0013,https://example.com/survey/R0013/石塚智也,石塚智也,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0014,https://example.com/survey/R0014/中山紗織,中山紗織,体育系/Faculty of Health and Sport Sciences,Domain_researcher
-R0015,https://example.com/survey/R0015/藤田直子,藤田直子,芸術系/Faculty of Art and Design,Domain_researcher
-R0016,https://example.com/survey/R0016/猿渡康文,猿渡康文,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher
-R0017,https://example.com/survey/R0017/平山大作,平山大作,体育系/Faculty of Health and Sport Sciences,Domain_researcher
-R0018,https://example.com/survey/R0018/室井-慧,室井 慧,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,AI_researcher
-R0019,https://example.com/survey/R0019/石井あずさ,石井あずさ,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher
-R0020,https://example.com/survey/R0020/西村-賢宣,西村 賢宣,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0021,https://example.com/survey/R0021/小沢-顕,小沢 顕,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0022,https://example.com/survey/R0022/直井義典,直井義典,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher
-R0023,https://example.com/survey/R0023/重田育照,重田育照,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0024,https://example.com/survey/R0024/谷-一寿,谷 一寿,計算科学研究センター/Center for Computational Sciences,AI_researcher
-R0025,https://example.com/survey/R0025/福島肇,福島肇,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0026,https://example.com/survey/R0026/秋山進一郎,秋山進一郎,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0027,https://example.com/survey/R0027/直江俊雄,直江俊雄,芸術系/Faculty of Art and Design,Domain_researcher
-R0028,https://example.com/survey/R0028/沼舘直樹,沼舘直樹,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0029,https://example.com/survey/R0029/戸田-浩史,戸田 浩史,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher
-R0030,https://example.com/survey/R0030/Masao-Mori,Masao Mori,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0031,https://example.com/survey/R0031/飯田崇史,飯田崇史,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0032,https://example.com/survey/R0032/丸本一弘,丸本一弘,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0033,https://example.com/survey/R0033/清水則孝,清水則孝,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0034,https://example.com/survey/R0034/所裕子,所裕子,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0035,https://example.com/survey/R0035/岡本裕樹,岡本裕樹,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher
-R0036,https://example.com/survey/R0036/大藏倫博,大藏倫博,体育系/Faculty of Health and Sport Sciences,Domain_researcher
-R0037,https://example.com/survey/R0037/謝淳,謝淳,計算科学研究センター/Center for Computational Sciences,AI_researcher
-R0038,https://example.com/survey/R0038/Wagner-Alexander,Wagner Alexander,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0039,https://example.com/survey/R0039/千島雄太,千島雄太,人間系/Faculty of Human Sciences,Domain_researcher
-R0040,https://example.com/survey/R0040/山本修平,山本修平,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher
-R0041,https://example.com/survey/R0041/高-鍾斌ゴジョンビンGo-Jongbin,高 鍾斌（ゴ・ジョンビン）(Go Jongbin),数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0042,https://example.com/survey/R0042/于海涛,于海涛,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher
-R0043,https://example.com/survey/R0043/加藤-誠,加藤 誠,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher
-R0044,https://example.com/survey/R0044/小谷弘明,小谷弘明,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0045,https://example.com/survey/R0045/下田一太,下田一太,芸術系/Faculty of Art and Design,Domain_researcher
-R0046,https://example.com/survey/R0046/坂口-綾,坂口 綾,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0047,https://example.com/survey/R0047/平賀-顕一,平賀 顕一,医学医療系/Faculty of Medicine,Domain_researcher
-R0048,https://example.com/survey/R0048/讃岐-勝,讃岐 勝,医学医療系/Faculty of Medicine,AI_researcher
-R0049,https://example.com/survey/R0049/水野裕史,水野裕史,芸術系/Faculty of Art and Design,Domain_researcher
-R0050,https://example.com/survey/R0050/村上史明,村上史明,芸術系/Faculty of Art and Design,Domain_researcher
-R0051,https://example.com/survey/R0051/照屋-翔太郎,照屋 翔太郎,医学医療系/Faculty of Medicine,Domain_researcher
-R0052,https://example.com/survey/R0052/井汲-彰,井汲 彰,体育系/Faculty of Health and Sport Sciences,Domain_researcher
-R0053,https://example.com/survey/R0053/山田博之,山田博之,芸術系/Faculty of Art and Design,Domain_researcher
-R0054,https://example.com/survey/R0054/上浦佑太,上浦佑太,芸術系/Faculty of Art and Design,Domain_researcher
-R0055,https://example.com/survey/R0055/島田憲佑,島田憲佑,医学医療系/Faculty of Medicine,Domain_researcher
-R0056,https://example.com/survey/R0056/横井-駿,横井 駿,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher
-R0057,https://example.com/survey/R0057/佐藤大輔,佐藤大輔,体育系/Faculty of Health and Sport Sciences,Domain_researcher
-R0058,https://example.com/survey/R0058/石崎和宏,石崎和宏,芸術系/Faculty of Art and Design,Domain_researcher
-R0059,https://example.com/survey/R0059/宮坂-慎司,宮坂 慎司,芸術系/Faculty of Art and Design,Domain_researcher
-R0060,https://example.com/survey/R0060/小山-慎一,小山 慎一,芸術系/Faculty of Art and Design,Domain_researcher
-R0061,https://example.com/survey/R0061/原忠信,原忠信,芸術系/Faculty of Art and Design,Domain_researcher
-R0062,https://example.com/survey/R0062/岩田祐佳梨,岩田祐佳梨,芸術系/Faculty of Art and Design,Domain_researcher
-R0063,https://example.com/survey/R0063/鎌田浩史,鎌田浩史,医学医療系/Faculty of Medicine,AI_researcher
-R0064,https://example.com/survey/R0064/Kaspar-Vogt,Kaspar Vogt,生命環境系/Faculty of Life and Environmental Sciences,AI_researcher
-R0065,https://example.com/survey/R0065/石賀-康博,石賀 康博,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher
-R0066,https://example.com/survey/R0066/高谷直樹,高谷直樹,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher
-R0067,https://example.com/survey/R0067/金尚泰,金尚泰,"図書館情報メディア系/Faculty of Library, Information and Media Science",Domain_researcher
-R0068,https://example.com/survey/R0068/星崇仁,星崇仁,医学医療系/Faculty of Medicine,Domain_researcher
-R0069,https://example.com/survey/R0069/Andrew-Utada,Andrew Utada,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher
-R0070,https://example.com/survey/R0070/若林-啓,若林 啓,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher
-R0071,https://example.com/survey/R0071/日下博幸,日下博幸,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0072,https://example.com/survey/R0072/Vijdan-Khalique,Vijdan Khalique,計算科学研究センター/Center for Computational Sciences,AI_researcher
-R0073,https://example.com/survey/R0073/池田真利子,池田真利子,芸術系/Faculty of Art and Design,Domain_researcher
-R0074,https://example.com/survey/R0074/肥後時尚,肥後時尚,芸術系/Faculty of Art and Design,Domain_researcher
-R0075,https://example.com/survey/R0075/粉川美踏,粉川美踏,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher
-R0076,https://example.com/survey/R0076/徳納吉秀,徳納吉秀,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher
-R0077,https://example.com/survey/R0077/須田恭之,須田恭之,医学医療系/Faculty of Medicine,Domain_researcher
-R0078,https://example.com/survey/R0078/堀江秀,堀江秀,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0079,https://example.com/survey/R0079/Sakay-Rodriguez-Oscar-Eduardo,Sakay Rodriguez Oscar Eduardo,芸術系/Faculty of Art and Design,AI_researcher
-R0080,https://example.com/survey/R0080/杉崎広空,杉崎広空,芸術系/Faculty of Art and Design,Domain_researcher
-R0081,https://example.com/survey/R0081/イン-ベイウェン,イン ベイウェン,生命環境系/Faculty of Life and Environmental Sciences,AI_researcher
-R0082,https://example.com/survey/R0082/内山俊朗,内山俊朗,芸術系/Faculty of Art and Design,Domain_researcher
-R0083,https://example.com/survey/R0083/保坂孝史,保坂孝史,医学医療系/Faculty of Medicine,Domain_researcher
-R0084,https://example.com/survey/R0084/矢島-秀伸,矢島 秀伸,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0085,https://example.com/survey/R0085/大須賀健,大須賀健,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0086,https://example.com/survey/R0086/八木清,八木清,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0087,https://example.com/survey/R0087/Mahesh-K-Kaushik,Mahesh K. Kaushik,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher
-R0088,https://example.com/survey/R0088/上北恭史,上北恭史,芸術系/Faculty of Art and Design,Domain_researcher
-R0089,https://example.com/survey/R0089/服部利明,服部利明,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0090,https://example.com/survey/R0090/三俣-千春,三俣 千春,数理物質系/Faculty of Pure and Applied Sciences,AI_researcher
-R0091,https://example.com/survey/R0091/大井川-治宏,大井川 治宏,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0092,https://example.com/survey/R0092/関口隆史,関口隆史,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0093,https://example.com/survey/R0093/角田-憲治,角田 憲治,体育系/Faculty of Health and Sport Sciences,Domain_researcher
-R0094,https://example.com/survey/R0094/石橋章司,石橋章司,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0095,https://example.com/survey/R0095/相山玲子,相山玲子,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0096,https://example.com/survey/R0096/溝口知成,溝口知成,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0097,https://example.com/survey/R0097/上殿明良,上殿明良,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0098,https://example.com/survey/R0098/吉原-ゆかり,吉原 ゆかり,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher
-R0099,https://example.com/survey/R0099/福島竜輝,福島竜輝,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0100,https://example.com/survey/R0100/佐垣大輔,佐垣大輔,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0101,https://example.com/survey/R0101/平石-典子,平石 典子,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher
-R0102,https://example.com/survey/R0102/志賀拓也,志賀拓也,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0103,https://example.com/survey/R0103/索米亜,索米亜,芸術系/Faculty of Art and Design,AI_researcher
-R0104,https://example.com/survey/R0104/矢澤翔,矢澤翔,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher
-R0105,https://example.com/survey/R0105/澤田-聖人,澤田 聖人,芸術系/Faculty of Art and Design,Domain_researcher
-R0106,https://example.com/survey/R0106/岩崎拓也,岩崎拓也,人文社会系/Faculty of Humanities and Social Sciences,AI_researcher
-R0107,https://example.com/survey/R0107/山本孟,山本孟,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher
-R0108,https://example.com/survey/R0108/丸山-常彦,丸山 常彦,医学医療系/Faculty of Medicine,Domain_researcher
-R0109,https://example.com/survey/R0109/佐藤有耕,佐藤有耕,人間系/Faculty of Human Sciences,Domain_researcher
-R0110,https://example.com/survey/R0110/中山-健,中山 健,医学医療系/Faculty of Medicine,Domain_researcher
-R0111,https://example.com/survey/R0111/森-龍也,森 龍也,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0112,https://example.com/survey/R0112/山崎-剛,山崎 剛,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0113,https://example.com/survey/R0113/田中祐輔,田中祐輔,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher
-R0114,https://example.com/survey/R0114/申貞恩,申貞恩,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher
-R0115,https://example.com/survey/R0115/樫原-輝,樫原 輝,人間系/Faculty of Human Sciences,Domain_researcher
-R0116,https://example.com/survey/R0116/南山-淳,南山 淳,人文社会系/Faculty of Humanities and Social Sciences,AI_researcher
-R0117,https://example.com/survey/R0117/北原-格,北原 格,計算科学研究センター/Center for Computational Sciences,AI_researcher
-R0118,https://example.com/survey/R0118/Chia-Jung-Tsai,Chia-Jung Tsai,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher
-R0119,https://example.com/survey/R0119/LI-JINGJING,LI JINGJING,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher
-R0120,https://example.com/survey/R0120/宮川創,宮川創,人文社会系/Faculty of Humanities and Social Sciences,AI_researcher
-R0121,https://example.com/survey/R0121/荏原充宏,荏原充宏,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0122,https://example.com/survey/R0122/中尾篤史,中尾篤史,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher
-R0123,https://example.com/survey/R0123/木下-陽平,木下 陽平,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher
-R0124,https://example.com/survey/R0124/浦田淳司,浦田淳司,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher
-R0125,https://example.com/survey/R0125/河辺徹,河辺徹,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher
-R0126,https://example.com/survey/R0126/青木聡志,青木聡志,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher
-R0127,https://example.com/survey/R0127/町田文雄,町田文雄,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher
-R0128,https://example.com/survey/R0128/浅井健彦,浅井健彦,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher
-R0129,https://example.com/survey/R0129/柳沢明文,柳沢明文,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher
-R0130,https://example.com/survey/R0130/金森-由博,金森 由博,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher
-R0131,https://example.com/survey/R0131/小平大輔,小平大輔,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher
-R0132,https://example.com/survey/R0132/外山美樹,外山美樹,人間系/Faculty of Human Sciences,Domain_researcher
-R0133,https://example.com/survey/R0133/岡島敬一,岡島敬一,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher
-R0134,https://example.com/survey/R0134/齊藤裕一,齊藤裕一,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher
-R0135,https://example.com/survey/R0135/吉瀬章子,吉瀬章子,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher
-R0136,https://example.com/survey/R0136/村田光司,村田光司,"図書館情報メディア系/Faculty of Library, Information and Media Science",Domain_researcher
-R0137,https://example.com/survey/R0137/朝比奈雄太,朝比奈雄太,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0138,https://example.com/survey/R0138/原田彩佳,原田彩佳,生存ダイナミクス研究センター/Center for Dynamic Living Systems,Domain_researcher
-R0139,https://example.com/survey/R0139/草野-都,草野 都,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher
-R0140,https://example.com/survey/R0140/伊藤誠,伊藤誠,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher
-R0141,https://example.com/survey/R0141/佐奈喜-祐哉,佐奈喜 祐哉,生存ダイナミクス研究センター/Center for Dynamic Living Systems,Domain_researcher
-R0142,https://example.com/survey/R0142/山田-武志,山田 武志,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher
-R0143,https://example.com/survey/R0143/河野禎之,河野禎之,人間系/Faculty of Human Sciences,Domain_researcher
-R0144,https://example.com/survey/R0144/川島-宏一,川島 宏一,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher
-R0145,https://example.com/survey/R0145/山口佳樹,山口佳樹,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher
-R0146,https://example.com/survey/R0146/干川-尚人,干川 尚人,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher
-R0147,https://example.com/survey/R0147/照沼-利之,照沼 利之,医学医療系/Faculty of Medicine,Domain_researcher
-R0148,https://example.com/survey/R0148/森田えみ,森田えみ,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher
-R0149,https://example.com/survey/R0149/秋元祐太朗,秋元祐太朗,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher
-R0150,https://example.com/survey/R0150/大楽浩司,大楽浩司,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher
-R0151,https://example.com/survey/R0151/金子-元,金子 元,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0152,https://example.com/survey/R0152/本城咲季子,本城咲季子,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher
-R0153,https://example.com/survey/R0153/小野雄一,小野雄一,人文社会系/Faculty of Humanities and Social Sciences,AI_researcher
-R0154,https://example.com/survey/R0154/柳浦-猛,柳浦 猛,"図書館情報メディア系/Faculty of Library, Information and Media Science",Domain_researcher
-R0155,https://example.com/survey/R0155/山口友之,山口友之,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher
-R0156,https://example.com/survey/R0156/GARY-McLEOD,GARY McLEOD,芸術系/Faculty of Art and Design,Domain_researcher
-R0157,https://example.com/survey/R0157/秋山英三,秋山英三,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher
-R0158,https://example.com/survey/R0158/桑原-純平,桑原 純平,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0159,https://example.com/survey/R0159/渡邊育夢,渡邊育夢,数理物質系/Faculty of Pure and Applied Sciences,AI_researcher
-R0160,https://example.com/survey/R0160/陳映廷,陳映廷,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher
-R0161,https://example.com/survey/R0161/大野-聡,大野 聡,生存ダイナミクス研究センター/Center for Dynamic Living Systems,AI_researcher
-R0162,https://example.com/survey/R0162/大野浩史,大野浩史,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0163,https://example.com/survey/R0163/小泉裕康,小泉裕康,計算科学研究センター/Center for Computational Sciences,Domain_researcher
-R0164,https://example.com/survey/R0164/松島みどり,松島みどり,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher
-R0165,https://example.com/survey/R0165/Tianwen-Tan,Tianwen Tan,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
-R0166,https://example.com/survey/R0166/Ziyan-Jiang,Ziyan Jiang,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher
+﻿id,name,affiliation,role,url
+R0001,田中　佐代子,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0001/
+R0002,マニエー渡邊レミー,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0002/
+R0003,髙橋　阿貴,人間系/Faculty of Human Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0003/
+R0004,松田壮一郎,人間系/Faculty of Human Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0004/
+R0005,千島雄太,人間系/Faculty of Human Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0005/
+R0006,小林和子,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0006/
+R0007,Kai Wing Kevin Ho,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0007/
+R0008,菅原大地,人間系/Faculty of Human Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0008/
+R0009,名畑目　真吾,人間系/Faculty of Human Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0009/
+R0010,笹森貴裕,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0010/
+R0011,神戸　徹也,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0011/
+R0012,松田侑子,人間系/Faculty of Human Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0012/
+R0013,石塚智也,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0013/
+R0014,中山紗織,体育系/Faculty of Health and Sport Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0014/
+R0015,藤田直子,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0015/
+R0016,猿渡康文,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0016/
+R0017,平山大作,体育系/Faculty of Health and Sport Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0017/
+R0018,室井 慧,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,AI_researcher,https://ai4s--matching.pages.dev/survey/R0018/
+R0019,石井あずさ,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0019/
+R0020,西村　賢宣 ,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0020/
+R0021,小沢　顕,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0021/
+R0022,直井義典,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0022/
+R0023,重田育照,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0023/
+R0024,谷　一寿,計算科学研究センター/Center for Computational Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0024/
+R0025,福島肇,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0025/
+R0026,秋山進一郎,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0026/
+R0027,直江俊雄,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0027/
+R0028,沼舘直樹,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0028/
+R0029,戸田　浩史,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0029/
+R0030,Masao Mori,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0030/
+R0031,飯田崇史,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0031/
+R0032,丸本一弘,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0032/
+R0033,清水則孝,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0033/
+R0034,所裕子,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0034/
+R0035,岡本裕樹,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0035/
+R0036,大藏倫博,体育系/Faculty of Health and Sport Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0036/
+R0037,謝淳,計算科学研究センター/Center for Computational Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0037/
+R0038,Wagner Alexander,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0038/
+R0039,千島雄太,人間系/Faculty of Human Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0039/
+R0040,山本修平,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher,https://ai4s--matching.pages.dev/survey/R0040/
+R0041,高 鍾斌（ゴ・ジョンビン）(Go Jongbin),数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0041/
+R0042,于海涛,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher,https://ai4s--matching.pages.dev/survey/R0042/
+R0043,加藤 誠,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher,https://ai4s--matching.pages.dev/survey/R0043/
+R0044,小谷弘明,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0044/
+R0045,下田一太,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0045/
+R0046,坂口　綾,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0046/
+R0047,平賀　顕一,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0047/
+R0048,讃岐　勝,医学医療系/Faculty of Medicine,AI_researcher,https://ai4s--matching.pages.dev/survey/R0048/
+R0049,水野裕史,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0049/
+R0050,村上史明,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0050/
+R0051,照屋　翔太郎,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0051/
+R0052,井汲　彰,体育系/Faculty of Health and Sport Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0052/
+R0053,山田博之,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0053/
+R0054,上浦佑太,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0054/
+R0055,島田憲佑,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0055/
+R0056,横井 駿,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0056/
+R0057,佐藤大輔,体育系/Faculty of Health and Sport Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0057/
+R0058,石崎和宏,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0058/
+R0059,宮坂　慎司,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0059/
+R0060,小山　慎一,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0060/
+R0061,原忠信,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0061/
+R0062,岩田祐佳梨,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0062/
+R0063,鎌田浩史,医学医療系/Faculty of Medicine,AI_researcher,https://ai4s--matching.pages.dev/survey/R0063/
+R0064,Kaspar Vogt,生命環境系/Faculty of Life and Environmental Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0064/
+R0065,石賀　康博,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0065/
+R0066,高谷直樹,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0066/
+R0067,金尚泰,"図書館情報メディア系/Faculty of Library, Information and Media Science",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0067/
+R0068,星崇仁,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0068/
+R0069,Andrew Utada,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0069/
+R0070,若林 啓,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher,https://ai4s--matching.pages.dev/survey/R0070/
+R0071,日下博幸,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0071/
+R0072, Vijdan Khalique,計算科学研究センター/Center for Computational Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0072/
+R0073,池田真利子,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0073/
+R0074,肥後時尚,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0074/
+R0075,粉川美踏,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0075/
+R0076,徳納吉秀,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0076/
+R0077,須田恭之,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0077/
+R0078,堀江秀,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0078/
+R0079,Sakay Rodriguez Oscar Eduardo,芸術系/Faculty of Art and Design,AI_researcher,https://ai4s--matching.pages.dev/survey/R0079/
+R0080,杉崎広空,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0080/
+R0081,イン　ベイウェン,生命環境系/Faculty of Life and Environmental Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0081/
+R0082,内山俊朗,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0082/
+R0083,保坂孝史,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0083/
+R0084,矢島　秀伸,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0084/
+R0085,大須賀健,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0085/
+R0086,八木清,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0086/
+R0087,Mahesh K. Kaushik,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0087/
+R0088,上北恭史,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0088/
+R0089,服部利明,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0089/
+R0090,三俣　千春,数理物質系/Faculty of Pure and Applied Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0090/
+R0091,大井川　治宏,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0091/
+R0092,関口隆史 ,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0092/
+R0093,角田　憲治,体育系/Faculty of Health and Sport Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0093/
+R0094,石橋章司,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0094/
+R0095,相山玲子,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0095/
+R0096,溝口知成,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0096/
+R0097,上殿明良,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0097/
+R0098,吉原　ゆかり,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0098/
+R0099,福島竜輝,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0099/
+R0100,佐垣大輔,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0100/
+R0101,平石　典子,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0101/
+R0102,志賀拓也,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0102/
+R0103,索米亜,芸術系/Faculty of Art and Design,AI_researcher,https://ai4s--matching.pages.dev/survey/R0103/
+R0104,矢澤翔,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0104/
+R0105,澤田　聖人,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0105/
+R0106,岩崎拓也,人文社会系/Faculty of Humanities and Social Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0106/
+R0107,山本孟,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0107/
+R0108,丸山　常彦,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0108/
+R0109,佐藤有耕,人間系/Faculty of Human Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0109/
+R0110,中山　健,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0110/
+R0111,森　龍也,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0111/
+R0112,山崎 剛,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0112/
+R0113,田中祐輔,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0113/
+R0114,申貞恩,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0114/
+R0115,樫原　輝,人間系/Faculty of Human Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0115/
+R0116,南山 淳,人文社会系/Faculty of Humanities and Social Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0116/
+R0117,北原　格,計算科学研究センター/Center for Computational Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0117/
+R0118,Chia-Jung Tsai,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0118/
+R0119,LI JINGJING,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher,https://ai4s--matching.pages.dev/survey/R0119/
+R0120,宮川創,人文社会系/Faculty of Humanities and Social Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0120/
+R0121,荏原充宏,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0121/
+R0122,中尾篤史,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0122/
+R0123,木下 陽平,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0123/
+R0124,浦田淳司,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0124/
+R0125,河辺徹,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0125/
+R0126,青木聡志,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0126/
+R0127,町田文雄,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0127/
+R0128,浅井健彦,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0128/
+R0129,柳沢明文,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0129/
+R0130,金森 由博,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0130/
+R0131,小平大輔,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0131/
+R0132,外山美樹,人間系/Faculty of Human Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0132/
+R0133,岡島敬一,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0133/
+R0134,齊藤裕一,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0134/
+R0135,吉瀬章子,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0135/
+R0136,村田光司,"図書館情報メディア系/Faculty of Library, Information and Media Science",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0136/
+R0137,朝比奈雄太,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0137/
+R0138,原田彩佳,生存ダイナミクス研究センター/Center for Dynamic Living Systems,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0138/
+R0139,草野　都,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0139/
+R0140,伊藤誠,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0140/
+R0141,佐奈喜　祐哉,生存ダイナミクス研究センター/Center for Dynamic Living Systems,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0141/
+R0142,山田 武志,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0142/
+R0143,河野禎之,人間系/Faculty of Human Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0143/
+R0144,川島 宏一,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0144/
+R0145,山口佳樹,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0145/
+R0146,干川 尚人,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0146/
+R0147,照沼　利之,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0147/
+R0148,森田えみ,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0148/
+R0149,秋元祐太朗,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0149/
+R0150,大楽浩司,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0150/
+R0151,金子 元,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0151/
+R0152,本城咲季子,国際統合睡眠医科学研究機構/International Institute for Integrative Sleep Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0152/
+R0153,小野雄一,人文社会系/Faculty of Humanities and Social Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0153/
+R0154,柳浦　猛,"図書館情報メディア系/Faculty of Library, Information and Media Science",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0154/
+R0155,山口友之,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0155/
+R0156,GARY McLEOD,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0156/
+R0157,秋山英三,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0157/
+R0158,桑原　純平,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0158/
+R0159,渡邊育夢,数理物質系/Faculty of Pure and Applied Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0159/
+R0160,陳映廷,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher,https://ai4s--matching.pages.dev/survey/R0160/
+R0161,大野　聡,生存ダイナミクス研究センター/Center for Dynamic Living Systems,AI_researcher,https://ai4s--matching.pages.dev/survey/R0161/
+R0162,大野浩史,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0162/
+R0163,小泉裕康,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0163/
+R0164,松島みどり,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0164/
+R0165,Tianwen Tan,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0165/
+R0166,Ziyan Jiang,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0166/
+R0167,松井　崇　Takashi Matsui,体育系/Faculty of Health and Sport Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0167/
+R0168,鈴木研悟,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0168/
+R0169,康　承源,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0169/
+R0170,金宣経,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher,https://ai4s--matching.pages.dev/survey/R0170/
+R0171,延原肇,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0171/
+R0172,延原肇,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0172/
+R0173,延原肇,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0173/
+R0174,Phung-duc Tuan,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0174/
+R0175,雨宮　護,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0175/
+R0176,平川　秀彦,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0176/
+R0177,甲斐田直子,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0177/
+R0178,ヤェム　ヴィボル,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0178/
+R0179,濱名裕治,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0179/
+R0180,吉川正志,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0180/
+R0181,坂本龍太郎,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0181/
+R0182,岡本直久,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0182/
+R0183,竹内有哉,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0183/
+R0184,川村一宏,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0184/
+R0185,小野　肇,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0185/
+R0186,長谷部浩二,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0186/
+R0187,中條　達也,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0187/
+R0188,矢田和善,数理物質系/Faculty of Pure and Applied Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0188/
+R0189,桑原敏郎,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0189/
+R0190,手塚太郎,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0190/
+R0191,川田清和,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0191/
+R0192,竹山美宏,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0192/
+R0193,足立　将大,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0193/
+R0194,高橋大成,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0194/
+R0195,中村 貴志,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0195/
+R0196,中務　孝,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0196/
+R0197,延原肇,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0197/
+R0198,照井　章,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0198/
+R0199,西田優杜,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0199/
+R0200,沓村憲樹,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0200/
+R0201,安芸 裕久,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0201/
+R0202,伊達央,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0202/
+R0203,崔　宰栄,人文社会系/Faculty of Humanities and Social Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0203/
+R0204,Youchan Yim,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0204/
+R0205,上保秀夫,"図書館情報メディア系/Faculty of Library, Information and Media Science",AI_researcher,https://ai4s--matching.pages.dev/survey/R0205/
+R0206,寺田康彦,数理物質系/Faculty of Pure and Applied Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0206/
+R0207,辻美和子,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0207/
+R0208,藤井さやか,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0208/
+R0209,久野 朗広,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0209/
+R0210,SHEN Biao,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0210/
+R0211,佐野　良夫,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0211/
+R0212,川越敏昌,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0212/
+R0213,Kai Wing Kevin Ho,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0213/
+R0214,潮海久雄,ビジネスサイエンス系/Faculty of Business Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0214/
+R0215,田村陽子,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0215/
+R0216,Caroline F. Benton,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0216/
+R0217,篠田　康俊,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0217/
+R0218,牧本直樹,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0218/
+R0219,讃井　知,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0219/
+R0220,國廣昇,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0220/
+R0221,木村真生子,ビジネスサイエンス系/Faculty of Business Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0221/
+R0222,加藤毅,教学マネジメント室,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0222/
+R0223,平田祥人,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0223/
+R0224,塩川 浩昭,計算科学研究センター/Center for Computational Sciences,AI_researcher,https://ai4s--matching.pages.dev/survey/R0224/
+R0225,亀山啓輔,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0225/
+R0226,五十嵐　康彦,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0226/
+R0227,津川 翔,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0227/
+R0228,鹿野　豊,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0228/
+R0229,阿部洋丈,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0229/
+R0230,高久雅生,"図書館情報メディア系/Faculty of Library, Information and Media Science",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0230/
+R0231,前島展也,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0231/
+R0232,佐々木銀河,人間系/Faculty of Human Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0232/
+R0233,松永真理子,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0233/
+R0234,秋本洋平,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0234/
+R0235,三宮 秀次,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0235/
+R0236,福地 一斗,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0236/
+R0237,鈴木 大三,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0237/
+R0238,立本博文,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0238/
+R0239,Yoshinari Kameda,計算科学研究センター/Center for Computational Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0239/
+R0240,伴正隆,ビジネスサイエンス系/Faculty of Business Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0240/
+R0241,河合 新,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0241/
+R0242,西出隆志,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0242/
+R0243,石塚祐香,人間系/Faculty of Human Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0243/
+R0244,髙谷 剛志,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0244/
+R0245,野中　聡子,生命環境系/Faculty of Life and Environmental Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0245/
+R0246,山際伸一,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0246/
+R0247,門根秀樹,医学医療系/Faculty of Medicine,AI_researcher,https://ai4s--matching.pages.dev/survey/R0247/
+R0248,矢野博明,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0248/
+R0249,牧村哲也,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0249/
+R0250,荒木孝太,医学医療系/Faculty of Medicine,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0250/
+R0251,奥村慎,数理物質系/Faculty of Pure and Applied Sciences,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0251/
+R0252,GUO Qiang,"システム情報系/Faculty of Engineering, Information and Systems",Domain_researcher,https://ai4s--matching.pages.dev/survey/R0252/
+R0253,尾川明穂,芸術系/Faculty of Art and Design,Domain_researcher,https://ai4s--matching.pages.dev/survey/R0253/
+R0254,善甫 啓一,"システム情報系/Faculty of Engineering, Information and Systems",AI_researcher,https://ai4s--matching.pages.dev/survey/R0254/
