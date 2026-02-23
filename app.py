@@ -404,6 +404,24 @@ else:
 ai_df = df[df["role_norm"] == "ai_researcher"].reset_index(drop=True)
 other_df = df[df["role_norm"] == "other_field_researcher"].reset_index(drop=True)
 
+st.write("### ✅ デバッグ：埋め込み用テキスト確認（embed_text）")
+
+debug_id = st.selectbox(
+    "確認したいIDを選んでください",
+    df["id"].tolist(),
+    index=0
+)
+
+row = df[df["id"] == debug_id].iloc[0]
+
+st.write("**role_norm:**", row["role_norm"])
+st.write("**name:**", row["name"])
+st.write("**embed_text 文字数:**", len(row["embed_text"]))
+st.text_area("embed_text（類似度計算に使う全文）", row["embed_text"], height=400)
+
+# どの元フィールドから来てるかもざっくり確認したい場合（行頭keyを手がかりに）
+st.write("**embed_text 冒頭20行プレビュー**")
+st.code("\n".join(row["embed_text"].splitlines()[:20]))
 c1, c2, c3 = st.columns(3)
 c1.metric("総件数", len(df))
 c2.metric("AI研究者", len(ai_df))
