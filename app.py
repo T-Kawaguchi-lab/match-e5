@@ -167,49 +167,86 @@ def _flatten_to_lines(obj: Any, prefix: str = "", max_items: int = 200) -> List[
     return lines
 
 
-def build_embedding_text_from_new_schema(r: Dict[str, Any]) -> str:
+def _as_list(x):
+    if x is None:
+        return []
+    if isinstance(x, list):
+        return [v for v in x if v is not None and str(v).strip() != ""]
+    # 文字列1個などはリスト化
+    s = str(x).strip()
+    return [s] if s else []
+
+
+def build_embedding_text_selected_fields(r: Dict[str, Any]) -> str:
     """
-    新JSONLの主要ブロックをなるべく漏れなく集めて、埋め込み用テキストを作る。
-    既存の match_text.* がある場合はそれを優先しつつ、他ブロックも補強として追加する。
+    埋め込み入力を「指定された項目のみ」に限定して組み立てる。
+    対象:
+      - research_field
+      - project.themes[]
+      - data.sources_and_collection
+      - data.data_types_raw
+      - data.modalities
+      - data.complexity_flags
+      - data.complexity_raw
+      - needs.needed_ai_category_hints（表記ゆれにも対応）
     """
-    parts: List[str] = []
 
-    # 1) まず優先キーから取れるものがあれば採用
-    primary = get_text_by_priority(r, TEXT_KEY_PRIORITY)
-    if isinstance(primary, str) and primary.strip():
-        parts.append(primary.strip())
+    lines: List[str] = []
 
-    # 2) 新スキーマの主要ブロックを追加（存在するものだけ）
-    for key in ["ai_experience", "project", "data", "quality", "evidence"]:
-        v = r.get(key)
-        if v is None:
-            continue
-        lines = _flatten_to_lines(v, prefix=key)
-        if lines:
-            parts.append("\n".join(lines))
+    # 1) research_field（metaに入っている）
+    research_field = get_nested(r, "meta.research_field") or r.get("research_field")
+    if isinstance(research_field, str) and research_field.strip():
+        lines.append(f"research_field: {research_field.strip()}")
 
-    # 3) meta も軽く入れる（ただし長くなりすぎないように key: value 形式）
-    meta = r.get("meta", {})
-    if isinstance(meta, dict) and meta:
-        meta_lines = _flatten_to_lines(meta, prefix="meta", max_items=80)
-        if meta_lines:
-            parts.append("\n".join(meta_lines))
+    # 2) project.themes[]
+    themes = get_nested(r, "project.themes")
+    themes_list = _as_list(themes)
+    if themes_list:
+        # 1行に詰めるより、箇条書きにするとE5でも情報が保たれやすい
+        lines.append("project_themes:")
+        for t in themes_list:
+            lines.append(f"- {str(t).strip()}")
 
-    # 4) 最後に合成（重複行は削除）
-    merged = "\n".join([p for p in parts if p])
-    # 行単位で重複排除（順序維持）
-    seen = set()
-    out_lines = []
-    for line in merged.splitlines():
-        ll = line.strip()
-        if not ll:
-            continue
-        if ll in seen:
-            continue
-        seen.add(ll)
-        out_lines.append(ll)
-    return "\n".join(out_lines).strip()
+    # 3) data.sources_and_collection
+    sources_and_collection = get_nested(r, "data.sources_and_collection")
+    if isinstance(sources_and_collection, str) and sources_and_collection.strip():
+        lines.append(f"sources_and_collection: {sources_and_collection.strip()}")
 
+    # 4) data.data_types_raw（スペル：data_types_raw）
+    data_types_raw = get_nested(r, "data.data_types_raw")
+    if isinstance(data_types_raw, str) and data_types_raw.strip():
+        lines.append(f"data_types_raw: {data_types_raw.strip()}")
+
+    # 5) data.modalities（list）
+    modalities = _as_list(get_nested(r, "data.modalities"))
+    if modalities:
+        lines.append("modalities: " + "; ".join([str(x).strip() for x in modalities]))
+
+    # 6) data.complexity_flags（list）
+    complexity_flags = _as_list(get_nested(r, "data.complexity_flags"))
+    if complexity_flags:
+        lines.append("complexity_flags: " + "; ".join([str(x).strip() for x in complexity_flags]))
+
+    # 7) data.complexity_raw（list or str）
+    complexity_raw = get_nested(r, "data.complexity_raw")
+    cr_list = _as_list(complexity_raw)
+    if cr_list:
+        lines.append("complexity_raw: " + "; ".join([str(x).strip() for x in cr_list]))
+
+    # 8) need_ai_category_hints / needed_ai_category_hints（needsの中）
+    # 実データでは needed_ai_category_hints の可能性が高いので両対応
+    hints = (
+        get_nested(r, "needs.need_ai_category_hints")
+        or get_nested(r, "needs.needed_ai_category_hints")
+        or get_nested(r, "need_ai_category_hints")
+        or get_nested(r, "needed_ai_category_hints")
+    )
+    hints_list = _as_list(hints)
+    if hints_list:
+        lines.append("needed_ai_category_hints: " + "; ".join([str(x).strip() for x in hints_list]))
+
+    # 何も取れないと空になるので、最低限 research_field すら無い場合は空文字
+    return "\n".join(lines).strip()
 
 def get_text_by_priority(r: Dict[str, Any], priorities: List[str]) -> str:
     for key in priorities:
@@ -379,7 +416,7 @@ for i, r in enumerate(rows, start=1):
     roles_raw.append(role_raw)
 
     # ✅ 新JSONLの主要情報も含めて埋め込みテキストを作る（重要）
-    embed_text = build_embedding_text_from_new_schema(r)
+    embed_text = build_embedding_text_selected_fields(r)
 
     records.append({
         "id": rid,
