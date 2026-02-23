@@ -171,100 +171,151 @@ def _as_list(x):
     if x is None:
         return []
     if isinstance(x, list):
-        return [v for v in x if v is not None and str(v).strip() != ""]
+        return [str(v).strip() for v in x if str(v).strip()]
     s = str(x).strip()
     return [s] if s else []
 
 
-def _join_list(xs, sep="、"):
-    xs = [str(x).strip() for x in xs if str(x).strip()]
-    return sep.join(xs)
+def _is_english(text: str) -> bool:
+    """
+    英語が主体か判定（簡易）
+    """
+    if not text:
+        return False
+    ascii_ratio = sum(1 for c in text if ord(c) < 128) / len(text)
+    return ascii_ratio > 0.7
 
 
 def build_embedding_text_selected_fields(r: Dict[str, Any]) -> str:
-    """
-    指定8項目だけを使い、E5向けに「自然文」にして埋め込み入力を作る。
-    対象:
-      - research_field
-      - project.themes[]
-      - data.sources_and_collection
-      - data.data_types_raw
-      - data.modalities
-      - data.complexity_flags
-      - data.complexity_raw
-      - needs.needed_ai_category_hints（表記ゆれ対応）
-    """
 
-    # 1) research_field
-    research_field = get_nested(r, "meta.research_field") or r.get("research_field")
-    research_field = research_field.strip() if isinstance(research_field, str) else ""
+    role = (
+        get_nested(r, "meta.role")
+        or get_nested(r, "role")
+        or ""
+    ).lower()
 
-    # 2) project.themes[]
-    themes_list = _as_list(get_nested(r, "project.themes"))
+    research_field = (
+        get_nested(r, "meta.research_field")
+        or r.get("research_field")
+        or ""
+    ).strip()
 
-    # 3) sources_and_collection
-    sources_and_collection = get_nested(r, "data.sources_and_collection")
-    sources_and_collection = sources_and_collection.strip() if isinstance(sources_and_collection, str) else ""
+    sentences = []
 
-    # 4) data_types_raw
-    data_types_raw = get_nested(r, "data.data_types_raw")
-    data_types_raw = data_types_raw.strip() if isinstance(data_types_raw, str) else ""
+    # ==========================
+    # Domain Researcher
+    # ==========================
+    if "domain" in role or "other" in role:
 
-    # 5) modalities
-    modalities = _as_list(get_nested(r, "data.modalities"))
+        themes = _as_list(get_nested(r, "project.themes"))
 
-    # 6) complexity_flags
-    complexity_flags = _as_list(get_nested(r, "data.complexity_flags"))
+        sources = get_nested(r, "data.sources_and_collection") or ""
+        data_types = get_nested(r, "data.data_types_raw") or ""
+        modalities = _as_list(get_nested(r, "data.modalities"))
+        complexity_flags = _as_list(get_nested(r, "data.complexity_flags"))
+        complexity_raw = _as_list(get_nested(r, "data.complexity_raw"))
 
-    # 7) complexity_raw
-    complexity_raw = _as_list(get_nested(r, "data.complexity_raw"))
+        hints = (
+            get_nested(r, "needs.needed_ai_category_hints")
+            or get_nested(r, "needs.need_ai_category_hints")
+            or []
+        )
+        hints = _as_list(hints)
 
-    # 8) needed_ai_category_hints
-    hints = (
-        get_nested(r, "needs.need_ai_category_hints")
-        or get_nested(r, "needs.needed_ai_category_hints")
-        or get_nested(r, "need_ai_category_hints")
-        or get_nested(r, "needed_ai_category_hints")
-    )
-    hints_list = _as_list(hints)
+        # research_field
+        if research_field:
+            if _is_english(research_field):
+                sentences.append(f"My research field is {research_field}.")
+            else:
+                sentences.append(f"私の研究分野は{research_field}です。")
 
-    # ---- 文章化（自然文）----
-    sents = []
+        # themes
+        if themes:
+            t = " / ".join(themes)
+            if _is_english(t):
+                sentences.append(f"My research themes include {t}.")
+            else:
+                sentences.append(f"研究テーマは{t}です。")
 
-    if research_field:
-        sents.append(f"私の研究分野は{research_field}です。")
+        # sources
+        if sources:
+            if _is_english(sources):
+                sentences.append(f"My data sources include {sources}.")
+            else:
+                sentences.append(f"データ収集方法は{sources}です。")
 
-    if themes_list:
-        # 複数テーマがあるなら「主なテーマは…」でまとめる
-        if len(themes_list) == 1:
-            sents.append(f"研究テーマは「{themes_list[0]}」です。")
-        else:
-            sents.append(f"研究テーマは、{_join_list([f'「{t}」' for t in themes_list], sep='、')}です。")
+        # data types
+        if data_types:
+            if _is_english(data_types):
+                sentences.append(f"The data types are {data_types}.")
+            else:
+                sentences.append(f"データ種別は{data_types}です。")
 
-    if sources_and_collection:
-        sents.append(f"データの収集方法・出所は{sources_and_collection}です。")
+        # modalities
+        if modalities:
+            sentences.append(f"Data modalities include {', '.join(modalities)}.")
 
-    if data_types_raw:
-        sents.append(f"扱うデータ種別は{data_types_raw}です。")
+        # complexity
+        if complexity_raw:
+            c = ", ".join(complexity_raw)
+            if _is_english(c):
+                sentences.append(f"The data complexity is {c}.")
+            else:
+                sentences.append(f"データの複雑性は{c}です。")
 
-    if modalities:
-        # 英語タグはそのまま活かす（E5に効くことが多い）
-        sents.append(f"データのモダリティは{', '.join(modalities)}です。")
+        elif complexity_flags:
+            sentences.append(f"Complexity flags include {', '.join(complexity_flags)}.")
 
-    # complexity は flags と raw の両方がある場合は raw を優先しつつ両方残す
-    if complexity_raw and complexity_flags:
-        sents.append(f"データの複雑性は{_join_list(complexity_raw)}（flag: {', '.join(complexity_flags)}）です。")
-    elif complexity_raw:
-        sents.append(f"データの複雑性は{_join_list(complexity_raw)}です。")
-    elif complexity_flags:
-        sents.append(f"データの複雑性フラグは{', '.join(complexity_flags)}です。")
+        # hints
+        if hints:
+            sentences.append(
+                f"Needed AI categories include {', '.join(hints)}."
+            )
 
-    if hints_list:
-        sents.append(f"必要とするAI領域のヒントは{', '.join(hints_list)}です。")
+    # ==========================
+    # AI Researcher
+    # ==========================
+    else:
 
-    # 何もない場合の保険
-    text = " ".join([x for x in sents if x]).strip()
-    return text
+        ai_cat = _as_list(get_nested(r, "offers.ai_categories_5_1"))
+        ai_cat_raw = _as_list(get_nested(r, "offers.ai_categories_raw"))
+
+        methods = _as_list(get_nested(r, "offers.methods_keyword"))
+
+        themes = _as_list(
+            get_nested(r, "offers.current_main_research_themes")
+        )
+
+        # research field
+        if research_field:
+            if _is_english(research_field):
+                sentences.append(f"My research field is {research_field}.")
+            else:
+                sentences.append(f"私の研究分野は{research_field}です。")
+
+        # AI categories
+        cats = ai_cat or ai_cat_raw
+
+        if cats:
+            sentences.append(
+                f"My AI expertise includes {', '.join(cats)}."
+            )
+
+        # methods
+        if methods:
+            sentences.append(
+                f"My research methods include {', '.join(methods)}."
+            )
+
+        # themes
+        if themes:
+            t = " / ".join(themes)
+            if _is_english(t):
+                sentences.append(f"My main research themes are {t}.")
+            else:
+                sentences.append(f"主な研究テーマは{t}です。")
+
+    return " ".join(sentences).strip()
 
 def get_text_by_priority(r: Dict[str, Any], priorities: List[str]) -> str:
     for key in priorities:
