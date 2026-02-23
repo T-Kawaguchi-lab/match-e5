@@ -246,7 +246,9 @@ roles_raw = []
 for i, r in enumerate(rows, start=1):
     rid = build_id(i)
     meta = r.get("meta", {}) if isinstance(r.get("meta", {}), dict) else {}
-    role_raw = get_nested(r, ROLE_PATH)
+    role_raw = get_nested(r, "meta.role")
+    if role_raw is None:
+        role_raw = get_nested(r, "role")
     role_n = normalize_role_value(role_raw)
     roles_raw.append(role_raw)
 
