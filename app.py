@@ -1,7 +1,7 @@
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Iterable, Tuple
 
 import numpy as np
 import pandas as pd
@@ -14,11 +14,16 @@ from sentence_transformers import SentenceTransformer
 DEFAULT_MODEL = "intfloat/multilingual-e5-base"
 ROLE_PATH = "meta.role"
 
+# 旧データ互換＋新データで使いそうな候補も追加
 TEXT_KEY_PRIORITY = [
     "match_text.canonical_card_text",
+    "match_text",  # match_text が文字列の場合
     "e5_text",
     "e5_passage",
     "e5_query",
+    # 新JSONLでよくある可能性のある場所（保険）
+    "card_text",
+    "canonical_card_text",
 ]
 
 st.set_page_config(page_title="AI↔他分野 推薦（E5）", layout="wide")
@@ -68,10 +73,26 @@ def normalize_role_value(v: Any) -> str:
         return ""
     s = str(v).strip().lower()
     s = s.replace(" ", "_").replace("-", "_")
-    if s in {"ai_researcher", "ai", "provider", "system_researcher", "system", "ai_research"}:
+
+    # AI側の表記ゆれ
+    if s in {
+        "ai_researcher", "ai", "provider",
+        "system_researcher", "system", "ai_research",
+        "ai-researcher", "ai_researchers",
+        "ai研究者", "ai研究", "ai系", "ai分野"
+    }:
         return "ai_researcher"
-    if s in {"other_field_researcher", "other", "needs", "science_researcher", "domain_researcher", "non_ai", "other_field"}:
+
+    # 他分野側の表記ゆれ
+    if s in {
+        "other_field_researcher", "other", "needs",
+        "science_researcher", "domain_researcher",
+        "non_ai", "other_field",
+        "other-field-researcher", "domain",
+        "他分野研究者", "非ai", "非_ai", "non-ai"
+    }:
         return "other_field_researcher"
+
     return s
 
 
@@ -89,6 +110,13 @@ def summarize_one_line(r: Dict[str, Any]) -> str:
     v = get_nested(r, "match_text.one_line_pitch")
     if isinstance(v, str) and v.strip():
         return v.strip()
+
+    # match_text が文字列のとき
+    v2 = r.get("match_text")
+    if isinstance(v2, str) and v2.strip():
+        s = v2.strip()
+        return (s[:160] + "…") if len(s) > 160 else s
+
     v = get_nested(r, "match_text.canonical_card_text")
     if isinstance(v, str) and v.strip():
         s = v.strip()
@@ -96,14 +124,110 @@ def summarize_one_line(r: Dict[str, Any]) -> str:
     return ""
 
 
+def _flatten_to_lines(obj: Any, prefix: str = "", max_items: int = 200) -> List[str]:
+    """
+    新JSONLの ai_experience / project / data 等を、埋め込み用にテキスト化するための安全なフラット化。
+    """
+    lines: List[str] = []
+
+    def add_line(k: str, v: Any):
+        if v is None:
+            return
+        if isinstance(v, str):
+            vv = v.strip()
+            if vv:
+                lines.append(f"{k}: {vv}" if k else vv)
+        elif isinstance(v, (int, float, bool)):
+            lines.append(f"{k}: {v}" if k else str(v))
+        else:
+            # dict/list はさらに展開されるのでここでは何もしない
+            pass
+
+    def walk(x: Any, p: str = ""):
+        if len(lines) >= max_items:
+            return
+        if isinstance(x, dict):
+            for kk, vv in x.items():
+                key = f"{p}.{kk}" if p else str(kk)
+                if isinstance(vv, (dict, list)):
+                    walk(vv, key)
+                else:
+                    add_line(key, vv)
+        elif isinstance(x, list):
+            for idx, vv in enumerate(x):
+                key = f"{p}[{idx}]" if p else f"[{idx}]"
+                if isinstance(vv, (dict, list)):
+                    walk(vv, key)
+                else:
+                    add_line(key, vv)
+        else:
+            add_line(p, x)
+
+    walk(obj, prefix)
+    return lines
+
+
+def build_embedding_text_from_new_schema(r: Dict[str, Any]) -> str:
+    """
+    新JSONLの主要ブロックをなるべく漏れなく集めて、埋め込み用テキストを作る。
+    既存の match_text.* がある場合はそれを優先しつつ、他ブロックも補強として追加する。
+    """
+    parts: List[str] = []
+
+    # 1) まず優先キーから取れるものがあれば採用
+    primary = get_text_by_priority(r, TEXT_KEY_PRIORITY)
+    if isinstance(primary, str) and primary.strip():
+        parts.append(primary.strip())
+
+    # 2) 新スキーマの主要ブロックを追加（存在するものだけ）
+    for key in ["ai_experience", "project", "data", "quality", "evidence"]:
+        v = r.get(key)
+        if v is None:
+            continue
+        lines = _flatten_to_lines(v, prefix=key)
+        if lines:
+            parts.append("\n".join(lines))
+
+    # 3) meta も軽く入れる（ただし長くなりすぎないように key: value 形式）
+    meta = r.get("meta", {})
+    if isinstance(meta, dict) and meta:
+        meta_lines = _flatten_to_lines(meta, prefix="meta", max_items=80)
+        if meta_lines:
+            parts.append("\n".join(meta_lines))
+
+    # 4) 最後に合成（重複行は削除）
+    merged = "\n".join([p for p in parts if p])
+    # 行単位で重複排除（順序維持）
+    seen = set()
+    out_lines = []
+    for line in merged.splitlines():
+        ll = line.strip()
+        if not ll:
+            continue
+        if ll in seen:
+            continue
+        seen.add(ll)
+        out_lines.append(ll)
+    return "\n".join(out_lines).strip()
+
+
 def get_text_by_priority(r: Dict[str, Any], priorities: List[str]) -> str:
     for key in priorities:
         v = get_nested(r, key)
         if isinstance(v, str) and v.strip():
             return v.strip()
+
+    # match_text が dict のときは canonical_card_text を最後に再確認
     v = get_nested(r, "match_text.canonical_card_text")
     if isinstance(v, str) and v.strip():
         return v.strip()
+
+    # 新JSONLで match_text が文字列のとき
+    v2 = r.get("match_text")
+    if isinstance(v2, str) and v2.strip():
+        return v2.strip()
+
+    # 最後の保険（metaのJSON化）
     return json.dumps(r.get("meta", {}), ensure_ascii=False)
 
 
@@ -246,11 +370,16 @@ roles_raw = []
 for i, r in enumerate(rows, start=1):
     rid = build_id(i)
     meta = r.get("meta", {}) if isinstance(r.get("meta", {}), dict) else {}
+
+    # role: 旧(meta.role)→新(role) の順で取得
     role_raw = get_nested(r, "meta.role")
     if role_raw is None:
         role_raw = get_nested(r, "role")
     role_n = normalize_role_value(role_raw)
     roles_raw.append(role_raw)
+
+    # ✅ 新JSONLの主要情報も含めて埋め込みテキストを作る（重要）
+    embed_text = build_embedding_text_from_new_schema(r)
 
     records.append({
         "id": rid,
@@ -260,7 +389,9 @@ for i, r in enumerate(rows, start=1):
         "position": meta.get("position") or "",
         "research_field": meta.get("research_field") or "",
         "summary": summarize_one_line(r),
-        "embed_text": get_text_by_priority(r, TEXT_KEY_PRIORITY),
+        "embed_text": embed_text,
+        # 参考: ここに追加情報を保持（UIは変えないので表示列には使わない）
+        "role_raw": "" if role_raw is None else str(role_raw),
     })
 
 df = pd.DataFrame(records)
