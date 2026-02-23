@@ -501,9 +501,6 @@ st.write("**name:**", row["name"])
 st.write("**embed_text 文字数:**", len(row["embed_text"]))
 st.text_area("embed_text（類似度計算に使う全文）", row["embed_text"], height=400)
 
-# どの元フィールドから来てるかもざっくり確認したい場合（行頭keyを手がかりに）
-st.write("**embed_text 冒頭20行プレビュー**")
-st.code("\n".join(row["embed_text"].splitlines()[:20]))
 c1, c2, c3 = st.columns(3)
 c1.metric("総件数", len(df))
 c2.metric("AI研究者", len(ai_df))
