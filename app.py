@@ -172,14 +172,18 @@ def _as_list(x):
         return []
     if isinstance(x, list):
         return [v for v in x if v is not None and str(v).strip() != ""]
-    # 文字列1個などはリスト化
     s = str(x).strip()
     return [s] if s else []
 
 
+def _join_list(xs, sep="、"):
+    xs = [str(x).strip() for x in xs if str(x).strip()]
+    return sep.join(xs)
+
+
 def build_embedding_text_selected_fields(r: Dict[str, Any]) -> str:
     """
-    埋め込み入力を「指定された項目のみ」に限定して組み立てる。
+    指定8項目だけを使い、E5向けに「自然文」にして埋め込み入力を作る。
     対象:
       - research_field
       - project.themes[]
@@ -188,53 +192,34 @@ def build_embedding_text_selected_fields(r: Dict[str, Any]) -> str:
       - data.modalities
       - data.complexity_flags
       - data.complexity_raw
-      - needs.needed_ai_category_hints（表記ゆれにも対応）
+      - needs.needed_ai_category_hints（表記ゆれ対応）
     """
 
-    lines: List[str] = []
-
-    # 1) research_field（metaに入っている）
+    # 1) research_field
     research_field = get_nested(r, "meta.research_field") or r.get("research_field")
-    if isinstance(research_field, str) and research_field.strip():
-        lines.append(f"research_field: {research_field.strip()}")
+    research_field = research_field.strip() if isinstance(research_field, str) else ""
 
     # 2) project.themes[]
-    themes = get_nested(r, "project.themes")
-    themes_list = _as_list(themes)
-    if themes_list:
-        # 1行に詰めるより、箇条書きにするとE5でも情報が保たれやすい
-        lines.append("project_themes:")
-        for t in themes_list:
-            lines.append(f"- {str(t).strip()}")
+    themes_list = _as_list(get_nested(r, "project.themes"))
 
-    # 3) data.sources_and_collection
+    # 3) sources_and_collection
     sources_and_collection = get_nested(r, "data.sources_and_collection")
-    if isinstance(sources_and_collection, str) and sources_and_collection.strip():
-        lines.append(f"sources_and_collection: {sources_and_collection.strip()}")
+    sources_and_collection = sources_and_collection.strip() if isinstance(sources_and_collection, str) else ""
 
-    # 4) data.data_types_raw（スペル：data_types_raw）
+    # 4) data_types_raw
     data_types_raw = get_nested(r, "data.data_types_raw")
-    if isinstance(data_types_raw, str) and data_types_raw.strip():
-        lines.append(f"data_types_raw: {data_types_raw.strip()}")
+    data_types_raw = data_types_raw.strip() if isinstance(data_types_raw, str) else ""
 
-    # 5) data.modalities（list）
+    # 5) modalities
     modalities = _as_list(get_nested(r, "data.modalities"))
-    if modalities:
-        lines.append("modalities: " + "; ".join([str(x).strip() for x in modalities]))
 
-    # 6) data.complexity_flags（list）
+    # 6) complexity_flags
     complexity_flags = _as_list(get_nested(r, "data.complexity_flags"))
-    if complexity_flags:
-        lines.append("complexity_flags: " + "; ".join([str(x).strip() for x in complexity_flags]))
 
-    # 7) data.complexity_raw（list or str）
-    complexity_raw = get_nested(r, "data.complexity_raw")
-    cr_list = _as_list(complexity_raw)
-    if cr_list:
-        lines.append("complexity_raw: " + "; ".join([str(x).strip() for x in cr_list]))
+    # 7) complexity_raw
+    complexity_raw = _as_list(get_nested(r, "data.complexity_raw"))
 
-    # 8) need_ai_category_hints / needed_ai_category_hints（needsの中）
-    # 実データでは needed_ai_category_hints の可能性が高いので両対応
+    # 8) needed_ai_category_hints
     hints = (
         get_nested(r, "needs.need_ai_category_hints")
         or get_nested(r, "needs.needed_ai_category_hints")
@@ -242,11 +227,44 @@ def build_embedding_text_selected_fields(r: Dict[str, Any]) -> str:
         or get_nested(r, "needed_ai_category_hints")
     )
     hints_list = _as_list(hints)
-    if hints_list:
-        lines.append("needed_ai_category_hints: " + "; ".join([str(x).strip() for x in hints_list]))
 
-    # 何も取れないと空になるので、最低限 research_field すら無い場合は空文字
-    return "\n".join(lines).strip()
+    # ---- 文章化（自然文）----
+    sents = []
+
+    if research_field:
+        sents.append(f"私の研究分野は{research_field}です。")
+
+    if themes_list:
+        # 複数テーマがあるなら「主なテーマは…」でまとめる
+        if len(themes_list) == 1:
+            sents.append(f"研究テーマは「{themes_list[0]}」です。")
+        else:
+            sents.append(f"研究テーマは、{_join_list([f'「{t}」' for t in themes_list], sep='、')}です。")
+
+    if sources_and_collection:
+        sents.append(f"データの収集方法・出所は{sources_and_collection}です。")
+
+    if data_types_raw:
+        sents.append(f"扱うデータ種別は{data_types_raw}です。")
+
+    if modalities:
+        # 英語タグはそのまま活かす（E5に効くことが多い）
+        sents.append(f"データのモダリティは{', '.join(modalities)}です。")
+
+    # complexity は flags と raw の両方がある場合は raw を優先しつつ両方残す
+    if complexity_raw and complexity_flags:
+        sents.append(f"データの複雑性は{_join_list(complexity_raw)}（flag: {', '.join(complexity_flags)}）です。")
+    elif complexity_raw:
+        sents.append(f"データの複雑性は{_join_list(complexity_raw)}です。")
+    elif complexity_flags:
+        sents.append(f"データの複雑性フラグは{', '.join(complexity_flags)}です。")
+
+    if hints_list:
+        sents.append(f"必要とするAI領域のヒントは{', '.join(hints_list)}です。")
+
+    # 何もない場合の保険
+    text = " ".join([x for x in sents if x]).strip()
+    return text
 
 def get_text_by_priority(r: Dict[str, Any], priorities: List[str]) -> str:
     for key in priorities:
