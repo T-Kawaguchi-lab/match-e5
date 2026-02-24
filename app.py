@@ -498,6 +498,14 @@ row = df[df["name"] == debug_id].iloc[0]
 
 st.write("**role_norm:**", row["role_norm"])
 st.write("**name:**", row["name"])
+# ✅ URL表示（クリック可能）
+if "url" in row and pd.notna(row["url"]):
+    st.write("**アンケートURL:**")
+    st.link_button("open", row["url"])   # ←おすすめ
+    # 代替案：
+    # st.write(row["url"])
+else:
+    st.write("**アンケートURL:** なし")
 st.write("**embed_text 文字数:**", len(row["embed_text"]))
 st.text_area("embed_text（類似度計算に使う全文）", row["embed_text"], height=400)
 
