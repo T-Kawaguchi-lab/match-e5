@@ -489,8 +489,8 @@ other_df = df[df["role_norm"] == "other_field_researcher"].reset_index(drop=True
 st.write("### ✅ デバッグ：埋め込み用テキスト確認（embed_text）")
 
 debug_id = st.selectbox(
-    "確認したいIDを選んでください",
-    df["id"].tolist(),
+    "確認したい名前を選んでください",
+    df["name"].tolist(),
     index=0
 )
 
