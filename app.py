@@ -494,7 +494,7 @@ debug_id = st.selectbox(
     index=0
 )
 
-row = df[df["id"] == debug_id].iloc[0]
+row = df[df["name"] == debug_id].iloc[0]
 
 st.write("**role_norm:**", row["role_norm"])
 st.write("**name:**", row["name"])
